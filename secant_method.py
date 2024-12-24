@@ -1,4 +1,4 @@
-from original_function import f
+from original_function import f, isViableMessage
 # Item c)
 # Método da Secante
 def secant(C, Q0, Q1, tol, max_iter=100):
@@ -25,6 +25,7 @@ if __name__ == "__main__":
 
         print(f"Raiz encontrada: {Q_root}")
         print(f"Número de iterações: {iterations}")
+        print(isViableMessage(Q_root))
     except ValueError as e:
         print(e)
     except Exception as e:

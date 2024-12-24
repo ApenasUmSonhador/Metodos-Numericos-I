@@ -1,7 +1,7 @@
 # Item a)
 # Função auxiliar para o Método do Ponto Fixo
 import math
-from original_function import f
+from original_function import f, isViableMessage
 
 def phi(Q, C):
     return math.sqrt(C * math.exp(Q) / 4)
@@ -24,10 +24,11 @@ if __name__ == "__main__":
         tol = 1e-4
         max_iter = 100
 
-        Q_root, iterations = fixed_point(lambda Q: phi(Q, C), Q0, tol, max_iter)
+        Q_root, iterations = fixed_point(lambda Q: phi(Q, C), C, Q0, tol, max_iter)
 
         print(f"Raiz encontrada: {Q_root}")
         print(f"Número de iterações: {iterations}")
+        print(isViableMessage(Q_root))
     except ValueError as e:
         print(e)
     except Exception as e:

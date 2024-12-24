@@ -1,5 +1,5 @@
 import math
-from original_function import f
+from original_function import f, isViableMessage
 # Item b)
 # Derivada de f(Q) em relação a Q: f'(Q) = C * e^Q - 8 * Q
 def df_dQ(Q, C):
@@ -28,6 +28,7 @@ if __name__ == "__main__":
 
         print(f"Raiz encontrada: {Q_root}")
         print(f"Número de iterações: {iterations}")
+        print(isViableMessage(Q_root))
     except ValueError as e:
         print(e)
     except Exception as e:

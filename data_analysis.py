@@ -60,25 +60,29 @@ def secant(C, Q0, Q1, tol=1e-4, max_iter=100):
 def tabela_comparativa(C, Q0, Q1, tol=1e-4, max_iter=100):
     # Testando os métodos
     # Ponto Fixo
-    raiz_fp, iter_fp, valores_fp = fixed_point(lambda Q: phi(Q, C), Q0, tol, max_iter)
+    root_fp, iter_fp, values_fp = fixed_point(lambda Q: phi(Q, C), Q0, tol, max_iter)
 
     # Newton Modificado
-    raiz_nm, iter_nm, valores_nm = newton_modified(C, Q0, tol, max_iter)
+    root_nm, iter_nm, values_nm = newton_modified(C, Q0, tol, max_iter)
 
     # Secante
-    raiz_sec, iter_sec, valores_sec = secant(C, Q0, Q1, tol, max_iter)
+    root_sec, iter_sec, values_sec = secant(C, Q0, Q1, tol, max_iter)
 
     # Exibindo a tabela comparativa
     print(f"{'Iteração':<10}{'Método':<20}{'Q Calculado':<15}{'Erro':<15}{'Tempo (s)':<10}")
     print("-" * 70) 
-    for i, (Q, error, exec_time) in enumerate(valores_fp, 1):
+    for i, (Q, error, exec_time) in enumerate(values_fp, 1):
         print(f"{i:<10}{'Ponto Fixo':<20}{Q:<15.8f}{error if error is not None else 0.0:<15.2e}{exec_time if exec_time is not None else 0.0:<10.8f}")
+    print("Conclusão:", isViableMessage(root_fp))
     print("-" * 70)
-    for i, (Q, error, exec_time) in enumerate(valores_nm, 1):
+    for i, (Q, error, exec_time) in enumerate(values_nm, 1):
         print(f"{i:<10}{'Newton Modificado':<20}{Q:<15.8f}{error if error is not None else 0.0:<15.2e}{exec_time if exec_time is not None else 0.0:<10.8f}")
+        print("Conclusão:", isViableMessage(root_nm))
     print("-" * 70)
-    for i, (Q, error, exec_time) in enumerate(valores_sec, 1):
+    for i, (Q, error, exec_time) in enumerate(values_sec, 1):
         print(f"{i:<10}{'Secante':<20}{Q:<15.8f}{error if error is not None else 0.0:<15.2e}{exec_time if exec_time is not None else 0.0:<10.8f}")
+    print("Conclusão:", isViableMessage(root_sec))
+    
 
 # Teste
 C = 1  # Valor de C
