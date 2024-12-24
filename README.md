@@ -34,7 +34,7 @@ A estrutura do projeto segue a seguinte organização:
 ```yaml
 Metodos-Numericos-I/
 ├── .gitignore                     # Arquivo para relevar caches e afins para git
-├── data_analysis_by_C_var.py                     # Análise minuciosa dos efeitos da variação de C
+├── data_analysis_by_C_var.py      # Análise minuciosa dos efeitos da variação de C
 ├── data_analysis.py               # Análise mais minuciosa dos resultador por método
 ├── fixed_point_method.py          # Arquivo com o método de ponto fixo
 ├── LICENSE                        # Licença estilo MIT sobre o projeto
