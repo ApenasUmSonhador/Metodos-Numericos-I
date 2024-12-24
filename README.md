@@ -30,13 +30,20 @@ Desenvolver um sistema para calcular o valor de `Q` que atenda aos seguintes req
 Em todos os itens e resultados, indicar se a empresa terá ou não falta de espaço e prejuízo financeiro.
 
 ## Estrutura do Projeto
-- `README.md`: Documentação do projeto
-- `fixed_point_method.py`: Implementação do método do Ponto Fixo (a)
-- `modified_newton_method.py`: Implementação do método de Newton modificado (b)
-- `secant_method.py`: Implementação do método da Secante (c)
-- `test_results.py`: Testes e comparação dos resultados por método (d, e)
-- `data_analysis.py`: Análise mais minuciosa dos resultador por método (f)
-- `data_analysis_by_C_var.py`: Análise minuciosa dos efeitos da variação de `C` (g)
+A estrutura do projeto segue a seguinte organização:
+```yaml
+Metodos-Numericos-I/
+├── .gitignore                     # Arquivo para relevar caches e afins para git
+├── data_analysis_by_C_var.py                     # Análise minuciosa dos efeitos da variação de C
+├── data_analysis.py               # Análise mais minuciosa dos resultador por método
+├── fixed_point_method.py          # Arquivo com o método de ponto fixo
+├── LICENSE                        # Licença estilo MIT sobre o projeto
+├── modified_newton_method.py      # Arquivo com o método de Newton modificado
+├── original_function.py           # Arquivo com a função original do problema
+├── README.md                      # Documentação do projeto
+├── secant_method.py               # Arquivo com o método da secante
+└── test_results.py                # Testes e comparação dos resultados por método
+```
 
 ## Como Executar
 1. Clone o repositório.
