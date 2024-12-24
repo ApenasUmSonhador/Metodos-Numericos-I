@@ -7,7 +7,7 @@ def phi(Q, C):
     return math.sqrt(C * math.exp(Q) / 4)
 
 # Método do Ponto Fixo
-def fixed_point(phi, Q0, tol, max_iter=100):
+def fixed_point(phi, C, Q0, tol, max_iter=100):
     Q = Q0
     for i in range(max_iter):
         Q_next = phi(Q)
