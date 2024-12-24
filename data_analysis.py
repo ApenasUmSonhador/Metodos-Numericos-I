@@ -1,6 +1,6 @@
 import math
 import time
-from original_function import f
+from original_function import f, isViableMessage
 from fixed_point_method import phi
 from modified_newton_method import df_dQ
 
@@ -11,8 +11,8 @@ def fixed_point(phi, Q0, tol=1e-4, max_iter=100):
     for i in range(max_iter):
         start_time = time.time()
         Q_next = phi(Q)
-        exec_time = time.time() - start_time
         error = min(abs(Q_next - Q), abs(f(Q_next, C)))
+        exec_time = time.time() - start_time
         Q_values.append((Q, error, exec_time))
         if error < tol:
             return Q_next, i + 1, Q_values
@@ -29,8 +29,8 @@ def newton_modified(C, Q0, tol=1e-4, max_iter=100):
         if df_Q0 == 0:
             raise ValueError("Derivada em Q0 é zero! Método não pode ser aplicado.")
         Q_next = Q - f(Q, C) / df_Q0
-        exec_time = time.time() - start_time
         error = min(abs(Q_next - Q), abs(f(Q_next, C)))
+        exec_time = time.time() - start_time
         Q_values.append((Q, error, exec_time))
         if error < tol:
             return Q_next, i + 1, Q_values
@@ -47,8 +47,8 @@ def secant(C, Q0, Q1, tol=1e-4, max_iter=100):
         if abs(fQ1 - fQ0) < tol:
             raise ValueError("Diferença muito pequena entre f(Q0) e f(Q1), método falhou.")
         Q_next = Q1 - fQ1 * (Q1 - Q0) / (fQ1 - fQ0)
-        exec_time = time.time() - start_time
         error = min(abs(Q_next - Q1), abs(f(Q_next, C)))
+        exec_time = time.time() - start_time
         Q_values.append((Q_next, error, exec_time))
         if error < tol:
             return Q_next, i + 1, Q_values
@@ -77,7 +77,7 @@ def tabela_comparativa(C, Q0, Q1, tol=1e-4, max_iter=100):
     print("-" * 70)
     for i, (Q, error, exec_time) in enumerate(values_nm, 1):
         print(f"{i:<10}{'Newton Modificado':<20}{Q:<15.8f}{error if error is not None else 0.0:<15.2e}{exec_time if exec_time is not None else 0.0:<10.8f}")
-        print("Conclusão:", isViableMessage(root_nm))
+    print("Conclusão:", isViableMessage(root_nm))
     print("-" * 70)
     for i, (Q, error, exec_time) in enumerate(values_sec, 1):
         print(f"{i:<10}{'Secante':<20}{Q:<15.8f}{error if error is not None else 0.0:<15.2e}{exec_time if exec_time is not None else 0.0:<10.8f}")

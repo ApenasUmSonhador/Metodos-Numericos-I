@@ -1,4 +1,3 @@
-# Item a)
 # Função auxiliar para o Método do Ponto Fixo
 import math
 from original_function import f, isViableMessage
@@ -6,6 +5,7 @@ from original_function import f, isViableMessage
 def phi(Q, C):
     return math.sqrt(C * math.exp(Q) / 4)
 
+# Item a)
 # Método do Ponto Fixo
 def fixed_point(phi, C, Q0, tol, max_iter=100):
     Q = Q0
